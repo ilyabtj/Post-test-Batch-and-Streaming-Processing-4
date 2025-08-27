@@ -27,5 +27,20 @@ The pipeline simulates a real-time data flow starting from message generation, i
 ---
 
 ## 🗂 Project Structure
+kafka-spark-pipeline/
+│
+├── app/
+│ ├── generator.py # Data generator (nested JSON)
+│ ├── producer.py # Kafka producer
+│ ├── spark_job.py # Spark consumer + transformer + sinks
+│ └── requirements.txt # Python dependencies
+│
+├── docker-compose.yml # Kafka + Zookeeper setup
+└── README.md # Project documentation
 
 
+# How To Run
+## 1. Start Kafka & Zookeeper
+``` bash
+docker-compose up -d
+```
