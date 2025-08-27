@@ -60,8 +60,10 @@ python app/spark_job.py
 }
 
 ## Aggregated Result (console sink)
+``` bash
 +-------+---------+------------+----------+
 |user_id|user_name|total_amount|avg_amount|
 +-------+---------+------------+----------+
 |42     |Ilya     |500.0       |250.0     |
 |36     |Arya     |237.0       |118.5     |
+```
