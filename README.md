@@ -49,6 +49,7 @@ python app/spark_job.py
 ```
 
 ## Example Outputs of Flattened Message (from topic ilya_flattened)
+``` bash
 {
   "user_id": 42,
   "user_name": "Ilya",
@@ -58,6 +59,7 @@ python app/spark_job.py
   "item_price": 75.0,
   "timestamp": "2025-08-27T10:30:00"
 }
+```
 
 ## Aggregated Result (console sink)
 ``` bash
