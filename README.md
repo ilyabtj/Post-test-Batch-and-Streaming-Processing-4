@@ -26,17 +26,6 @@ The pipeline simulates a real-time data flow starting from message generation, i
 
 ---
 
-## 🗂 Project Structure
-kafka-spark-pipeline/
-│
-├── app/
-│ ├── generator.py # Data generator (nested JSON)
-│ ├── producer.py # Kafka producer
-│ ├── spark_job.py # Spark consumer + transformer + sinks
-│ └── requirements.txt # Python dependencies
-│
-├── docker-compose.yml # Kafka + Zookeeper setup
-└── README.md # Project documentation
 
 
 # How To Run
@@ -44,3 +33,35 @@ kafka-spark-pipeline/
 ``` bash
 docker-compose up -d
 ```
+
+## 2. Run Producer (send messages)
+``` bash
+python app/producer.py
+```
+
+## 3. Run Spark Job (consume + transform)
+``` bash
+# Option 1 (if Spark is installed properly):
+spark-submit app/spark_job.py
+
+# Option 2 (via Python if pyspark installed):
+python app/spark_job.py
+```
+
+## Example Outputs of Flattened Message (from topic ilya_flattened)
+{
+  "user_id": 42,
+  "user_name": "Ilya",
+  "txn_id": 1234,
+  "txn_amount": 250.0,
+  "item_id": 1,
+  "item_price": 75.0,
+  "timestamp": "2025-08-27T10:30:00"
+}
+
+## Aggregated Result (console sink)
++-------+---------+------------+----------+
+|user_id|user_name|total_amount|avg_amount|
++-------+---------+------------+----------+
+|42     |Ilya     |500.0       |250.0     |
+|36     |Arya     |237.0       |118.5     |
